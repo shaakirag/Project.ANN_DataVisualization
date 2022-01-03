@@ -24,6 +24,10 @@ def dtypes(df):
 def info(df):
     return df.info()
 
+# Group headers by their mean per each outcome
+def mean_grouping(df, label)
+    return df.groupby(label).mean()
+
 # Statistical summary
 def describe(df):
     return data.describe()
