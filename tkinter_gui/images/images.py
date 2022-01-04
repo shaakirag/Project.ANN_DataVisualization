@@ -1,6 +1,6 @@
 from all_libs import *
 
-def logo(image):
+def set_logo(image):
     logo = Image.open(image)
     logo = ImageTk.PhotoImage(logo)
     logo_label = tk.Label(image=logo)
