@@ -1,7 +1,3 @@
-import tkinter
-
-import pandas as pd
-
 from all_libs import *
 from understanding_variables.un_var import *
 from data_cleaning.da_cl import *
@@ -32,14 +28,9 @@ welcome.grid(columnspan=1, column=2, row=1)
 
 # Browse button
 browse_txt = tk.StringVar()
-browse_btn = tk.Button(root, textvariable=browse_txt, font=font, bg='#008080', fg='White', height=2, width=15)
+browse_btn = tk.Button(root, textvariable=browse_txt, command=lambda:open_file(root, browse_txt, False), font=font, bg='#008080', fg='White', height=2, width=15)
 browse_txt.set('Browse')
 browse_btn.grid(column=2, row=3)
-
-df = False
-while not isinstance(df, pd.DataFrame):
-    df = open_file(root, browse_txt)
-
 
 
 root.mainloop()
