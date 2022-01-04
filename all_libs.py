@@ -22,6 +22,7 @@ import torch.nn.functional as F
 
 # GUI
 import tkinter as tk
+from tkinter import *
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 import os
