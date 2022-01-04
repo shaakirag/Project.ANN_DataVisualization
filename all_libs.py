@@ -12,6 +12,7 @@ import plotly.graph_objects as go
 from scipy.stats import multivariate_normal as mn
 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 
 # for the ANN
