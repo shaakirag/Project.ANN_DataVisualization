@@ -13,13 +13,22 @@ from prediction_ann import *
 from tkinter_gui.images import *
 
 df=pd.read_csv('diabetes.csv')
+font = 'Raleway'
 
 root = tk.Tk()
+
 
 canvas = tk.Canvas(root, width=1000, height=600)
 canvas.grid(columnspan=5, rowspan=3)
 
 logo('tkinter_gui/images/logo.png')
 
-root.mainloop()
+# Welcome message
+welcome = tk.Label(root, text = 'Upload a dataset to continue', font = font)
+welcome.grid(columnspan=1, column=2, row=1)
 
+# Browse button
+
+
+
+root.mainloop()
