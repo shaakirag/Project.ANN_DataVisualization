@@ -16,3 +16,4 @@ def scatter_matrix(df, label):
         sns.pairplot(df, hue=label, diag_kind='hist')
         plt.pyplot.show()
 
+
