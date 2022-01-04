@@ -19,3 +19,7 @@ from sklearn.metrics import accuracy_score
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
+# GUI
+import tkinter as tk
+from PIL import Image, ImageTk
