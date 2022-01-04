@@ -39,9 +39,6 @@ set_logo(frame, 'tkinter_gui/images/logo.png')
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 
-filemenu.add_command(label="Add Labels", command=lambda:add_label(font))
-menubar.add_cascade(label="Actions", menu=filemenu)
-
 root.config(menu=menubar)
 
 # Instructions message
@@ -52,10 +49,11 @@ instructions_btn.place(relx=0.325, rely=0.7, relwidth=0.35, relheight=0.05)
 
 # Browse button
 browse_txt = tk.StringVar()
-browse_btn = tk.Button(frame, textvariable=browse_txt, command=lambda:open_file(root, frame, browse_txt, False), font=font, bg='#008080', fg='White', height=2, width=15)
+browse_btn = tk.Button(frame, textvariable=browse_txt, command=lambda:open_file(root, frame, browse_txt, False, filemenu, menubar, font), font=font, bg='#008080', fg='White', height=2, width=15)
 browse_txt.set('Browse')
 #browse_btn.grid(column=2, row=3)
 browse_btn.place(relx=0.425, rely=0.77, relwidth=0.15, relheight=0.05)
+
 
 
 close = tk.Button(root, text='Close', command=root.destroy, font=font, bg='Black', fg='White')
