@@ -1,5 +1,6 @@
-from all_libs import *
-from prediction_ann import *
+import torch
+import matplotlib as plt
+from sklearn.metrics import accuracy_score
 
 def test_predictions(model, X_test):
     predictions=[]

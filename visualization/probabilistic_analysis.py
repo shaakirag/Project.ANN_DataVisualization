@@ -1,4 +1,6 @@
-from all_libs import *
+from chainconsumer import ChainConsumer
+import matplotlib as plt
+import seaborn as sns
 
 def chain_consumer(df, label, label0, label1, params):
     m = df[label] == 1

@@ -1,4 +1,5 @@
-from all_libs import *
+import matplotlib as plt
+import seaborn as sns
 
 # Count Plot
 def count_plot(df, label):

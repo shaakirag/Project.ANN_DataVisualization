@@ -1,4 +1,4 @@
-from all_libs import *
+from pandas import *
 
 # Dropping the duplicates
 def drop_duplicates(df):

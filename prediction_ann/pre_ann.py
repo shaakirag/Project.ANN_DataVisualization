@@ -1,5 +1,4 @@
-from all_libs import *
-from prediction_ann import *
+import torch
 
 def prediction(model, new_data):
     new_data = torch.tensor(new_data)

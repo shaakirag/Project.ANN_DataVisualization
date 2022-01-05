@@ -1,5 +1,6 @@
-from all_libs import *
-from prediction_ann import *
+import torch
+import torch.nn as nn
+import matplotlib as plt
 
 # Backward Propagation-- Define the loss_function,define the optimizer
 # User input for learning rate (0.01) 0.01 is the recommended value

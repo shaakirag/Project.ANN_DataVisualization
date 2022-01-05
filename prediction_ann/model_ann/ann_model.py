@@ -1,7 +1,5 @@
 import torch
-
-from all_libs import *
-from prediction_ann import *
+import torch.nn as nn
 
 class ANN_Model(nn.Module):
     def __init__(self,input_features,hidden1,hidden2,out_features=2):

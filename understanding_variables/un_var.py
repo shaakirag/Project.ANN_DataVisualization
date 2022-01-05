@@ -1,5 +1,3 @@
-from all_libs import *
-
 # Print the first few rows
 def head(df):
     return df.head()

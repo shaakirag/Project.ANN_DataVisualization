@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter.filedialog import askopenfile
+import os
 from understanding_variables import *
 
 # Instructions pop up
@@ -114,7 +116,18 @@ def set_value_fields(labels, menubar, editmenu, font):
     menubar.add_cascade(label='Pre-Processing', menu=editmenu)
 
 def understanding_your_variables():
-    pass
+    vars = tk.Toplevel()
+    vars.title('Understanding Your Variables')
+    frame = tk.Frame(vars='White', bd=5)
+    frame.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Label(frame, text="Label", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
+    tk.Label(frame, text="Label 0", font=font).place(relx=0.4, rely=0.4, relwidth=0.2, relheight=0.1)
+    tk.Label(frame, text="Label 1", font=font).place(relx=0.4, rely=0.6, relwidth=0.2, relheight=0.1)
+
+    label_entry = tk.Entry(frame, font=font)
+    label_0_entry = tk.Entry(frame, font=font)
+    label_1_entry = tk.Entry(frame, font=font)
 
 
 
