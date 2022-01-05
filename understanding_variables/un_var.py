@@ -90,8 +90,26 @@ def set_sample_field(sample_entry, frame1, df, font):
     output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)
 
 # View the number of rows and columns
-def shape(df):
-    return df.shape
+def shape(main_notebook, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='_Shape')
+
+    frame1 = tk.LabelFrame(frame, text='Shape of DataFrame', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    df_shape = df.shape()
+    rows = df_shape[0]
+    columns = df_shape[1]
+
+    output_text = f'Rows: {rows}\nColumns: {columns}'
+
+    output = tk.Label(frame1, text=output_text, font=(font, 8))
+    output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 # List of type of columns
 def dtypes(df):
