@@ -1,13 +1,3 @@
-from all_libs import *
-from understanding_variables.un_var import *
-from data_cleaning.da_cl import *
-from visualization.basic_analysis import *
-from visualization.comparative_analysis import *
-from visualization.probabilistic_analysis import *
-from prediction_ann.model_ann.ann_model import *
-from prediction_ann.model_ann.ann_test import *
-from prediction_ann.model_ann.backward_propagation import *
-from prediction_ann import *
 from tkinter_gui.funcs import *
 from tkinter_gui.images import *
 from tkinter_gui.images.images import *
@@ -46,13 +36,6 @@ filemenu = tk.Menu(menubar, tearoff=0)
 editmenu = tk.Menu(menubar, tearoff=0)
 
 root.config(menu=menubar)
-
-#     menu.filemenu.add_command(label="Add Labels", command=lambda: add_label(menu, font))
-#     menu.menubar.add_cascade(label="Actions", menu=menu.filemenu)
-#
-#     menu.filemenu.add_separator()
-#     menu.filemenu.add_command(label="Understanding Your Variables", command=lambda: add_label(font))
-#     menu.filemenu.add_command(label="Data Cleaning", command=lambda: add_label(font))
 
 # Instructions message
 instructions_txt = tk.StringVar()
