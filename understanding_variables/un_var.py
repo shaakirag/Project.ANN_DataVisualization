@@ -134,7 +134,7 @@ def info(main_notebook, df, font):
 
     main_notebook.add(frame, text='_NULL Info')
 
-    frame1 = tk.LabelFrame(frame, text=' Non-Null Count', font=font)
+    frame1 = tk.LabelFrame(frame, text='Non-Null Count', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     output = tk.Label(frame1, text=df.info(), font=font)
@@ -154,12 +154,33 @@ def mean_grouping(main_notebook, labels, df, font):
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     output = tk.Label(frame1, text=df.groupby(labels[0][1].label).mean(), font=(font,8))
-    output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)
+    output.place(relx=0, rely=0, relwidth=1, relheight=01)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 
 # Statistical summary
-def describe(df):
-    return df.describe()
+def describe(main_notebook, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='_Statistical Summary')
+
+    frame1 = tk.LabelFrame(frame, text='Summary', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Label(frame1, text="Header", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
+    describe_entry = tk.Entry(frame1, font=font)
+    describe_entry.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.04)
+
+    set_head = tk.Button(frame1, text='Set Value',
+                           command=lambda: set_describe_field(describe_entry, frame1, df, font), font=font, bg='#008080',fg='White')
+    set_head.place(relx=0.4, rely=0.4, relwidth=0.2, relheight=0.04)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
+
+def set_describe_field(describe_entry, frame1, df, font):
+    output = tk.Label(frame1, text=df[describe_entry.get()].describe(), font=(font,9))
+    output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)

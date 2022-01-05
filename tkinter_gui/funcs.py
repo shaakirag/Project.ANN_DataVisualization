@@ -133,7 +133,7 @@ def understanding_your_variables(main_notebook, labels, font, df):
     tk.Button(frame1, text='Column Types', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='NULL Info', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Mean per Label', command=lambda:mean_grouping(main_notebook, labels, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.71, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Statistical Summary', font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.82, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Statistical Summary', command=lambda:describe(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.82, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
