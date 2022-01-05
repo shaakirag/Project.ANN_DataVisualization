@@ -99,25 +99,49 @@ def shape(main_notebook, df, font):
     frame1 = tk.LabelFrame(frame, text='Shape of DataFrame', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    df_shape = df.shape()
+    df_shape = df.shape
     rows = df_shape[0]
     columns = df_shape[1]
 
-    output_text = f'Rows: {rows}\nColumns: {columns}'
+    output_text = f'Rows: {rows}\n\nColumns: {columns}'
 
-    output = tk.Label(frame1, text=output_text, font=(font, 8))
-    output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)
+    output = tk.Label(frame1, text=output_text, font=font)
+    output.place(relx=0, rely=0, relwidth=1, relheight=1)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 # List of type of columns
-def dtypes(df):
-    return df.dtypes
+def dtypes(main_notebook, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='_Column Types')
+
+    frame1 = tk.LabelFrame(frame, text='Type of Each Header', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    output = tk.Label(frame1, text=df.dtypes, font=font)
+    output.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 # No. of NULL values
-def info(df):
-    return df.info()
+def info(main_notebook, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='_NULL Info')
+
+    frame1 = tk.LabelFrame(frame, text=' Non-Null Count', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    output = tk.Label(frame1, text=df.info(), font=font)
+    output.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 # Group headers by their mean per each outcome
 def mean_grouping(df, label):
