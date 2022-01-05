@@ -144,8 +144,21 @@ def info(main_notebook, df, font):
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 # Group headers by their mean per each outcome
-def mean_grouping(df, label):
-    return df.groupby(label).mean()
+def mean_grouping(main_notebook, labels, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text=f'_Mean per {labels[0][1].label}')
+
+    frame1 = tk.LabelFrame(frame, text=f'Mean per {labels[0][1].label}', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    output = tk.Label(frame1, text=df.groupby(labels[0][1].label).mean(), font=(font,8))
+    output.place(relx=0, rely=0.5, relwidth=1, relheight=0.5)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
+
 
 # Statistical summary
 def describe(df):
