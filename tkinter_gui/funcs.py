@@ -3,11 +3,13 @@ import pandas as pd
 from understanding_variables.un_var import *
 
 # Instructions pop up
-def instructions(font):
-    inst = tk.Toplevel()
-    inst.title('Instructions')
-    frame = tk.Frame(inst, bg='White', bd=5)
-    frame.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+def instructions(main_notebook, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='Instructions')
+
+    main_notebook.select(1)
 
     # Text box for instructions
     frame1 = tk.LabelFrame(frame, text='Instructions', font=font)
@@ -17,15 +19,15 @@ def instructions(font):
                             font=font)
     instructions.pack()
 
-    close = tk.Button(inst, text='Close', command=inst.destroy, font=font, bg='#008080', fg='White')
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 
 # Uploading the file
-def open_file(root, frame, menubar, filemenu, editmenu, browse_txt, df, font):
+def open_file(main_notebook, frame, menubar, filemenu, editmenu, browse_txt, df, font):
     browse_txt.set('Loading...')
     while True:
-        file = tk.filedialog.askopenfile(parent=root, mode='rb', title='Choose a file', filetype=[('csv file', '*.csv')])
+        file = tk.filedialog.askopenfile(parent=main_notebook, mode='rb', title='Choose a file', filetype=[('csv file', '*.csv')])
         if file:
             while not isinstance(df, pd.DataFrame):
                 df = pd.read_csv(file)
@@ -41,17 +43,17 @@ def open_file(root, frame, menubar, filemenu, editmenu, browse_txt, df, font):
 
     browse_txt.set('Browse')
 
-    set_menu_label = tk.Button(frame, text='Next', command=lambda:set_label_menu(menubar, filemenu, editmenu, font, df), font=font, bg='#008080', fg='White')
+    set_menu_label = tk.Button(frame, text='Next', command=lambda:set_label_menu(main_notebook, menubar, filemenu, editmenu, font, df), font=font, bg='#008080', fg='White')
     set_menu_label.place(relx=0.9, rely=0.95, relwidth=0.1, relheight=0.04)
 
-def set_label_menu(menubar, filemenu, editmenu, font, df):
+def set_label_menu(main_notebook, menubar, filemenu, editmenu, font, df):
     if filemenu.index('end') is not None:
         for i in range(filemenu.index('end') + 1):
             if filemenu.entrycget(i, 'label') == 'Add Labels':
                 filemenu.delete('Add Labels')
                 menubar.delete('Actions')
 
-    filemenu.add_command(label="Add Labels", command=lambda: add_label(menubar, editmenu, font, df))
+    filemenu.add_command(label="Add Labels", command=lambda: add_label(main_notebook, menubar, editmenu, font, df))
     menubar.add_cascade(label="Actions", menu=filemenu)
 
 class Label:
@@ -64,11 +66,13 @@ class Label:
 
 
 # Adding Labels
-def add_label(menubar, editmenu, font, df):
-    label = tk.Toplevel()
-    label.title('Add Labels')
-    frame = tk.Frame(label, bg='White', bd=5)
-    frame.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+def add_label(main_notebook, menubar, editmenu, font, df):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='Add Labels')
+
+    main_notebook.select(1)
 
     tk.Label(frame, text="Label", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
     tk.Label(frame, text="Label 0", font=font).place(relx=0.4, rely=0.4, relwidth=0.2, relheight=0.1)
@@ -96,7 +100,7 @@ def add_label(menubar, editmenu, font, df):
               menubar, editmenu, font, df), font=font, bg='#008080', fg='White')
     set_values.place(relx=0.4, rely=0.9, relwidth=0.2,relheight=0.04)
 
-    close = tk.Button(label, text='Close', command=label.destroy, font=font, bg='#008080', fg='White')
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 def set_value_fields(labels, menubar, editmenu, font, df):

@@ -6,7 +6,7 @@ def set_logo(frame, image):
     logo = ImageTk.PhotoImage(logo)
     logo_label = tk.Label(frame, image=logo)
     logo_label.image = logo
-    logo_label.place(relx=0.25, rely=0.15, relwidth=0.5, relheight=0.5)
+    logo_label.place(relx=0.225, rely=0.1, relwidth=0.55, relheight=0.55)
 
 def set_background(root, image):
     background = tk.PhotoImage(image)
