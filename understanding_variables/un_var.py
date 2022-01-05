@@ -1,5 +1,9 @@
+import pandas as pd
+import tkinter as tk
+
 # Print the first few rows
 def head(df):
+
     return df.head()
 
 # Print the last few rows
