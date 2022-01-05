@@ -1,9 +1,16 @@
-import pandas as pd
 import tkinter as tk
 
 # Print the first few rows
-def head(df):
+def head(df, font):
+    head_ = tk.Toplevel()
+    head_.title('Head')
+    frame = tk.Frame(head_, bg='White', bd=5)
+    frame.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
+
+
+    close = tk.Button(head_, text='Close', command=head_.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
     return df.head()
 
 # Print the last few rows

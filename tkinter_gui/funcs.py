@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 from understanding_variables.un_var import *
 
 # Instructions pop up
@@ -119,7 +120,7 @@ def understanding_your_variables(font, df):
     frame = tk.Frame(vars, bg='White', bd=5)
     frame.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame, text='Head', command=lambda:head(df), font=font, bg='#008080', fg='White').place(relx=0.4, rely=0.05, relwidth=0.2, relheight=0.1)
+    tk.Button(frame, text='Head', command=lambda:head(df, font), font=font, bg='#008080', fg='White').place(relx=0.4, rely=0.05, relwidth=0.2, relheight=0.1)
     tk.Button(frame, text='Tail', font=font, bg='#008080', fg='White').place(relx=0.4, rely=0.16, relwidth=0.2, relheight=0.1)
     tk.Button(frame, text='Sample', font=font, bg='#008080', fg='White').place(relx=0.4, rely=0.27, relwidth=0.2, relheight=0.1)
     tk.Button(frame, text='Row and Column Number', font=font, bg='#008080', fg='White').place(relx=0.4, rely=0.38, relwidth=0.2, relheight=0.1)
