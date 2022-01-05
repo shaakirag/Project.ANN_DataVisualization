@@ -154,7 +154,7 @@ def mean_grouping(main_notebook, labels, df, font):
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     output = tk.Label(frame1, text=df.groupby(labels[0][1].label).mean(), font=(font,8))
-    output.place(relx=0, rely=0, relwidth=1, relheight=01)
+    output.place(relx=0, rely=0, relwidth=1, relheight=1)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
