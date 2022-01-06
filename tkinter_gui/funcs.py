@@ -189,7 +189,7 @@ def comparative_analysis(main_notebook, labels, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
     frame.pack(fill='both', expand=1)
 
-    main_notebook.add(frame, text='Data Cleaning')
+    main_notebook.add(frame, text='Comparative Analysis')
 
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
@@ -222,23 +222,21 @@ def probabilistic_analysis(main_notebook, labels, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
     frame.pack(fill='both', expand=1)
 
-    main_notebook.add(frame, text='Data Cleaning')
+    main_notebook.add(frame, text='Probabilistic Analysis')
 
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Drop Duplicates', command=lambda: drop_duplicates(df), font=font, bg='#008080',
+    tk.Button(frame1, text='Chain Consumer', command=lambda: chain_consumer(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda: replace_zeros_mean(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text="Replace '?' with NaN", command=lambda: replace_question_NaN(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Drop rows with NaN', command=lambda: drop_NaN_rows(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Rows', font=font, command=lambda: drop_rows(main_notebook, df, font), bg='#008080',
+    tk.Button(frame1, text='Multivariate Normal Distribution', command=lambda: multivariate_normal_distribution(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.3, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Scatter Matrix Label 0", command=lambda: scatter_matrix_label0(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.5, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Scatter Matrix Label 1', command=lambda: scatter_matrix_label1(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Columns', command=lambda: drop_columns(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Test Point Probability', font=font, command=lambda: test_point_prob(main_notebook, df, font), bg='#008080',
+              fg='White').place(relx=0.25, rely=0.9, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
