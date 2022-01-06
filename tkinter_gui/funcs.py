@@ -149,11 +149,11 @@ def cleaning_data(main_notebook, labels, font, df):
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     tk.Button(frame1, text='Drop Duplicates', command=lambda:drop_duplicates(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.05, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda:check_null(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text="Replace '?' with NaN", command=lambda:sample(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Drop rows with NaN', command=lambda:shape(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Rows', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Columns', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda:replace_zeros_mean(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Replace '?' with NaN", command=lambda:replace_question_NaN(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop rows with NaN', command=lambda:drop_NaN_rows(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Rows', font=font, command=lambda:drop_rows(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Columns', command=lambda:drop_columns(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
