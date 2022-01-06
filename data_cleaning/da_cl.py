@@ -5,18 +5,6 @@ def drop_duplicates(df):
     df = df.drop_duplicates
     return df
 
-# Number of NULLS for each header
-def check_null(df):
-    return df.isnull().sum()
-
-# Check the number of zero values in a dataset
-def number_zero_values(df, header_list):
-    h_zero_list = []
-    for h in header_list:
-        h_tuple = (h, df[df[h]==0.0].shape[0])
-        h_zero_list.append(h_tuple)
-    return h_zero_list
-
 # Replace no. of zeros with mean of those columns
 def replace_zeros_mean(df, header_list):
     for h in header_list:
