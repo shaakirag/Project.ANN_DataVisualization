@@ -1,3 +1,4 @@
+from all_libs import *
 from tkinter_gui.funcs import *
 from tkinter_gui.images import *
 from tkinter_gui.images.images import *
@@ -34,6 +35,7 @@ set_logo(frame, 'tkinter_gui/images/logo.png')
 menubar = tk.Menu(main_notebook)
 filemenu = tk.Menu(menubar, tearoff=0)
 editmenu = tk.Menu(menubar, tearoff=0)
+anamenu = tk.Menu(menubar, tearoff=0)
 
 root.config(menu=menubar)
 
@@ -47,7 +49,7 @@ instructions_btn.place(relx=0.325, rely=0.7, relwidth=0.35, relheight=0.05)
 # Browse button
 browse_txt = tk.StringVar()
 browse_btn = tk.Button(frame, textvariable=browse_txt,
-                       command=lambda: open_file(main_notebook, frame, menubar, filemenu, editmenu, browse_txt, False, font), font=font,
+                       command=lambda: open_file(main_notebook, frame, menubar, filemenu, editmenu, anamenu, browse_txt, False, font), font=font,
                        bg='#008080', fg='White', height=2, width=15)
 browse_txt.set('Browse')
 # browse_btn.grid(column=2, row=3)

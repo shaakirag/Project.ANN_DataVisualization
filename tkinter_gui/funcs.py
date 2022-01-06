@@ -22,7 +22,7 @@ def instructions(main_notebook, font):
 
 
 # Uploading the file
-def open_file(main_notebook, frame, menubar, filemenu, editmenu, browse_txt, df, font):
+def open_file(main_notebook, frame, menubar, filemenu, editmenu, anamenu, browse_txt, df, font):
     browse_txt.set('Loading...')
     while True:
         file = tk.filedialog.askopenfile(parent=main_notebook, mode='rb', title='Choose a file', filetype=[('csv file', '*.csv')])
@@ -41,17 +41,17 @@ def open_file(main_notebook, frame, menubar, filemenu, editmenu, browse_txt, df,
 
     browse_txt.set('Browse')
 
-    set_menu_label = tk.Button(frame, text='Next', command=lambda:set_label_menu(main_notebook, menubar, filemenu, editmenu, font, df), font=font, bg='#008080', fg='White')
+    set_menu_label = tk.Button(frame, text='Next', command=lambda:set_label_menu(main_notebook, menubar, filemenu, editmenu, anamenu, font, df), font=font, bg='#008080', fg='White')
     set_menu_label.place(relx=0.9, rely=0.95, relwidth=0.1, relheight=0.04)
 
-def set_label_menu(main_notebook, menubar, filemenu, editmenu, font, df):
+def set_label_menu(main_notebook, menubar, filemenu, editmenu, anamenu, font, df):
     if filemenu.index('end') is not None:
         for i in range(filemenu.index('end') + 1):
             if filemenu.entrycget(i, 'label') == 'Add Labels':
                 filemenu.delete('Add Labels')
                 menubar.delete('Actions')
 
-    filemenu.add_command(label="Add Labels", command=lambda: add_label(main_notebook, menubar, editmenu, font, df))
+    filemenu.add_command(label="Add Labels", command=lambda: add_label(main_notebook, menubar, editmenu, anamenu, font, df))
     menubar.add_cascade(label="Actions", menu=filemenu)
 
 class Label:
@@ -64,7 +64,7 @@ class Label:
 
 
 # Adding Labels
-def add_label(main_notebook, menubar, editmenu, font, df):
+def add_label(main_notebook, menubar, editmenu, anamenu, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
     frame.pack(fill='both', expand=1)
 
@@ -96,13 +96,13 @@ def add_label(main_notebook, menubar, editmenu, font, df):
     set_values = tk.Button(frame1, text='Set Values', command=lambda: set_value_fields(main_notebook, [[label_entry, label_entry_outcome],
                                                                           [label_0_entry, label_0_entry_negative],
                                                                           [label_1_entry, label_1_entry_positive]],
-              menubar, editmenu, font, df), font=font, bg='#008080', fg='White')
+              menubar, editmenu, anamenu, font, df), font=font, bg='#008080', fg='White')
     set_values.place(relx=0.4, rely=0.9, relwidth=0.2,relheight=0.04)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
-def set_value_fields(main_notebook, labels, menubar, editmenu, font, df):
+def set_value_fields(main_notebook, labels, menubar, editmenu, anamenu, font, df):
     for l in labels:
         l[1].label_func(l[0])
 
@@ -116,6 +116,10 @@ def set_value_fields(main_notebook, labels, menubar, editmenu, font, df):
     editmenu.add_command(label="Understanding Your Variables", command=lambda: understanding_your_variables(main_notebook, labels, font, df))
     editmenu.add_command(label="Data Cleaning", command=lambda: cleaning_data(main_notebook, labels, font, df))
     menubar.add_cascade(label='Pre-Processing', menu=editmenu)
+
+    anamenu.add_command(label="Data Visualization", command=lambda: data_visualization(main_notebook, labels, font, df))
+    anamenu.add_command(label="ANN Prediction", command=lambda: ann_prediction(main_notebook, labels, font, df))
+    menubar.add_cascade(label='Analysis and Prediction', menu=editmenu)
 
 def understanding_your_variables(main_notebook, labels, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
@@ -158,5 +162,8 @@ def cleaning_data(main_notebook, labels, font, df):
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
+def data_visualization(main_notebook, labels, font, df):
+    pass
 
-
+def ann_prediction(main_notebook, labels, font, df):
+    pass
