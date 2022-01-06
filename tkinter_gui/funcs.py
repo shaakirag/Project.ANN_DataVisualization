@@ -194,17 +194,25 @@ def comparative_analysis(main_notebook, labels, font, df):
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Drop Duplicates', command=lambda: drop_duplicates(df), font=font, bg='#008080',
+    tk.Button(frame1, text='Correlation Table', command=lambda: correlation_table(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda: replace_zeros_mean(df), font=font, bg='#008080',
+    tk.Button(frame1, text='Correlation Plot', command=lambda: correlation_plot(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text="Replace '?' with NaN", command=lambda: replace_question_NaN(df), font=font, bg='#008080',
+    tk.Button(frame1, text='Covariance Table', command=lambda: covariance_table(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Drop rows with NaN', command=lambda: drop_NaN_rows(df), font=font, bg='#008080',
+    tk.Button(frame1, text='Covariance Plot', command=lambda: covariance_plot(df), font=font, bg='#008080',
               fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Rows', font=font, command=lambda: drop_rows(main_notebook, df, font), bg='#008080',
+    tk.Button(frame1, text='Box Plot', font=font, command=lambda: box_plot(main_notebook, df, font), bg='#008080',
               fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Columns', command=lambda: drop_columns(main_notebook, df, font), font=font,
+    tk.Button(frame1, text='Violin Plot', command=lambda: violin_plot(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='2D Histogram', command=lambda: twoD_histogram(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Contour Plot', command=lambda: contour_plot(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='KDE Plot', command=lambda: kde_plot(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Scatter Plot', command=lambda: scatter_plot(main_notebook, df, font), font=font,
               bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
