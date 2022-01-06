@@ -73,7 +73,7 @@ def add_label(main_notebook, menubar, editmenu, anamenu, font, df):
 
     main_notebook.add(frame, text='Labels')
 
-    frame1 = tk.LabelFrame(frame, text='Instructions', font=font)
+    frame1 = tk.LabelFrame(frame, text='Set Labels', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     tk.Label(frame1, text="Label", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
@@ -111,14 +111,23 @@ def set_value_fields(main_notebook, labels, menubar, editmenu, anamenu, font, df
 
     if editmenu.index('end') is not None:
         for i in range(editmenu.index('end') + 1):
-            if editmenu.entrycget(i, 'label') == 'Cleaning Data':
-                editmenu.delete('Cleaning Data')
+            if editmenu.entrycget(i, 'label') == 'Understanding Your Variables':
+                editmenu.delete('Data Cleaning')
                 editmenu.delete('Understanding Your Variables')
                 menubar.delete('Pre-Processing')
 
     editmenu.add_command(label="Understanding Your Variables", command=lambda: understanding_your_variables(main_notebook, labels, font, df))
     editmenu.add_command(label="Data Cleaning", command=lambda: cleaning_data(main_notebook, labels, font, df))
     menubar.add_cascade(label='Pre-Processing', menu=editmenu)
+
+    if anamenu.index('end') is not None:
+        for i in range(editmenu.index('end') + 1):
+            if editmenu.entrycget(i, 'label') == 'Basic Analysis':
+                editmenu.delete('Basic Analysis')
+                editmenu.delete('Comparative Analysis')
+                editmenu.delete('Probabilistic Analysis')
+                editmenu.delete('ANN Prediction')
+                menubar.delete('Analysis and Prediction')
 
     anamenu.add_command(label="Basic Analysis", command=lambda: basic_analysis(main_notebook, labels, font, df))
     anamenu.add_command(label="Comparative Analysis", command=lambda: comparative_analysis(main_notebook, labels, font, df))
