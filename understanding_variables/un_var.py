@@ -150,25 +150,15 @@ def number_zero_values(main_notebook, df, font):
 
     main_notebook.add(frame, text='_Check Zero Values')
 
-    frame1 = tk.LabelFrame(frame, text='Set Input', font=font)
+    frame1 = tk.LabelFrame(frame, text='Zero Values', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Label(frame1, text="Header", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
-    header_entry = tk.Entry(frame1, font=font)
-    header_entry.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.04)
-
-    set_head = tk.Button(frame1, text='Set Value',
-                           command=lambda: set_zero_field(header_entry, frame1, df, font), font=font, bg='#008080',fg='White')
-    set_head.place(relx=0.4, rely=0.4, relwidth=0.2, relheight=0.04)
+    output_text = df.astype(bool).sum(axis=0)
+    output = tk.Label(frame1, text=output_text, font=(font,9))
+    output.place(relx=0, rely=0, relwidth=1, relheight=1)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
-
-def set_zero_field(header_entry, frame1, df, font):
-    output_text = 'Unavailable at this time. Sorry!'
-    #output_text = df[df[header_entry]==0.0].shape[0]
-    output = tk.Label(frame1, text=output_text, font=(font,9))
-    output.place(relx=0, rely=0, relwidth=1, relheight=1)
 
 # Group headers by their mean per each outcome
 def mean_grouping(main_notebook, labels, df, font):
