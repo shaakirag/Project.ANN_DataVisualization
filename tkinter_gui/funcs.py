@@ -195,25 +195,25 @@ def comparative_analysis(main_notebook, labels, font, df):
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     tk.Button(frame1, text='Correlation Table', command=lambda: correlation_table(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.04, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Correlation Plot', command=lambda: correlation_plot(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.14, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Covariance Table', command=lambda: covariance_table(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.24, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Covariance Plot', command=lambda: covariance_plot(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.34, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Box Plot', font=font, command=lambda: box_plot(main_notebook, df, font), bg='#008080',
-              fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.44, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Violin Plot', command=lambda: violin_plot(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+              bg='#008080', fg='White').place(relx=0.25, rely=0.54, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='2D Histogram', command=lambda: twoD_histogram(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+              bg='#008080', fg='White').place(relx=0.25, rely=0.64, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Contour Plot', command=lambda: contour_plot(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+              bg='#008080', fg='White').place(relx=0.25, rely=0.74, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='KDE Plot', command=lambda: kde_plot(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+              bg='#008080', fg='White').place(relx=0.25, rely=0.84, relwidth=0.5, relheight=0.05)
     tk.Button(frame1, text='Scatter Plot', command=lambda: scatter_plot(main_notebook, df, font), font=font,
-              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+              bg='#008080', fg='White').place(relx=0.25, rely=0.94, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
