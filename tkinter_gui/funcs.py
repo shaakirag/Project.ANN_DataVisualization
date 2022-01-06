@@ -114,7 +114,7 @@ def set_value_fields(main_notebook, labels, menubar, editmenu, font, df):
                 menubar.delete('Pre-Processing')
 
     editmenu.add_command(label="Understanding Your Variables", command=lambda: understanding_your_variables(main_notebook, labels, font, df))
-    editmenu.add_command(label="Cleaning Data", command=lambda: cleaning_data(main_notebook, labels, font, df))
+    editmenu.add_command(label="Data Cleaning", command=lambda: cleaning_data(main_notebook, labels, font, df))
     menubar.add_cascade(label='Pre-Processing', menu=editmenu)
 
 def understanding_your_variables(main_notebook, labels, font, df):
@@ -126,15 +126,15 @@ def understanding_your_variables(main_notebook, labels, font, df):
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Head', command=lambda:head(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.05, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Tail', command=lambda:tail(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Sample', command=lambda:sample(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Row and Column Number', command=lambda:shape(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Column Types', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='NULL Info', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Check Zero Values', command=lambda:number_zero_values(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.71, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Mean per Label', command=lambda:mean_grouping(main_notebook, labels, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.82, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Statistical Summary', command=lambda:describe(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.93, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Head', command=lambda:head(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.05, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Tail', command=lambda:tail(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.16, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Sample', command=lambda:sample(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.27, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Row and Column Number', command=lambda:shape(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.38, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Column Types', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.25, rely=0.49, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='NULL Info', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.6, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Check Zero Values', command=lambda:number_zero_values(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.71, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Mean per Label', command=lambda:mean_grouping(main_notebook, labels, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.82, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Statistical Summary', command=lambda:describe(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.93, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
@@ -143,17 +143,17 @@ def cleaning_data(main_notebook, labels, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
     frame.pack(fill='both', expand=1)
 
-    main_notebook.add(frame, text='Understanding Your Variables')
+    main_notebook.add(frame, text='Data Cleaning')
 
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Drop Duplicates', command=lambda:drop_duplicates(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.05, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda:replace_zeros_mean(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text="Replace '?' with NaN", command=lambda:replace_question_NaN(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Drop rows with NaN', command=lambda:drop_NaN_rows(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Rows', font=font, command=lambda:drop_rows(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Delete Columns', command=lambda:drop_columns(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop Duplicates', command=lambda:drop_duplicates(df), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda:replace_zeros_mean(df), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Replace '?' with NaN", command=lambda:replace_question_NaN(df), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop rows with NaN', command=lambda:drop_NaN_rows(df), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Rows', font=font, command=lambda:drop_rows(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Columns', command=lambda:drop_columns(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
