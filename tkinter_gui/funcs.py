@@ -1,6 +1,6 @@
 import os
-import pandas as pd
 from understanding_variables.un_var import *
+from data_cleaning.da_cl import *
 
 # Instructions pop up
 def instructions(main_notebook, font):
@@ -27,8 +27,8 @@ def open_file(main_notebook, frame, menubar, filemenu, editmenu, browse_txt, df,
     while True:
         file = tk.filedialog.askopenfile(parent=main_notebook, mode='rb', title='Choose a file', filetype=[('csv file', '*.csv')])
         if file:
-            while not isinstance(df, pd.DataFrame):
-                df = pd.read_csv(file)
+            while not isinstance(df, DataFrame):
+                df = read_csv(file)
             break
 
     # Small text box under browse button
@@ -148,14 +148,12 @@ def cleaning_data(main_notebook, labels, font, df):
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Drop Duplicates', command=lambda:head(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.05, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Tail', command=lambda:tail(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Sample', command=lambda:sample(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Row and Column Number', command=lambda:shape(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Column Types', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='NULL Info', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Mean per Label', command=lambda:mean_grouping(main_notebook, labels, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.71, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Statistical Summary', command=lambda:describe(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.82, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop Duplicates', command=lambda:drop_duplicates(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.05, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda:check_null(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.16, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Replace '?' with NaN", command=lambda:sample(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.27, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop rows with NaN', command=lambda:shape(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.38, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Rows', font=font, command=lambda:dtypes(main_notebook, df, font), bg='#008080', fg='White').place(relx=0.225, rely=0.49, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Columns', command=lambda:info(main_notebook, df, font), font=font, bg='#008080', fg='White').place(relx=0.225, rely=0.6, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
