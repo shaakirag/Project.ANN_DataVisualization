@@ -1,9 +1,9 @@
 from pandas import *
+import tkinter as tk
 
 # Dropping the duplicates
 def drop_duplicates(df):
     df = df.drop_duplicates
-    return df
 
 # Replace no. of zeros with mean of those columns
 def replace_zeros_mean(df, header_list):
@@ -13,19 +13,42 @@ def replace_zeros_mean(df, header_list):
 # If the data uses '?' for missing values then we can replace them with a NaN
 def replace_question_NaN(df):
     df = df.replace('?', np.NaN, inplace=True)
-    return df
 
 # Delete rows which contain missing values
 def drop_NaN_rows(df):
     df = df.dropna()
-    return df
 
 # Delete rows
-def drop_rows(df, row_list):
-    df = df.drop(row_list, axis=0)
-    return df
+def drop_rows(main_notebook, df, font):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='_Delete Rows')
+
+    frame1 = tk.LabelFrame(frame, text='Set Input', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Label(frame1, text="Row Index", font=font).place(relx=0.4, rely=0.2, relwidth=0.2, relheight=0.1)
+    rows_entry = tk.Entry(frame1, font=font)
+    rows_entry.insert(10, 5)
+    rows_entry.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.04)
+
+    set_head = tk.Button(frame1, text='Set Value',
+                           command=lambda: set_row_field(rows_entry, df), font=font, bg='#008080',fg='White')
+    set_head.place(relx=0.4, rely=0.4, relwidth=0.2, relheight=0.04)
+
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
+
+def set_row_field(rows_entry, df):
+    row_list = []
+    for r in rows_entry.get():
+        if r != ' ' and r != '' and r != ',':
+            row_list.append(int(r))
+    df.drop(row_list, axis=0, inplace=True)
 
 # Delete columns
 def drop_columns(df, header_list):
-    df = df.drop(header_list, axis=1)
+    df = df.drop(header_list, axis=1, inplace=True)
     return df
