@@ -178,9 +178,12 @@ def basic_analysis(main_notebook, labels, font, df):
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
     tk.Button(frame1, text='Count Plot', command=lambda: count_plot(df, labels), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.3, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Histogram', command=lambda: count_histogram(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.5, relwidth=0.5, relheight=0.05)
+              fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Histogram', command=lambda: count_histogram(main_notebook, df, font), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
+
+    tk.Button(frame1, text='Scatter Matrix', command=lambda: scatter_matrix(df,labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
