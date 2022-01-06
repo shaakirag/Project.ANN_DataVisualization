@@ -1,6 +1,9 @@
 import os
 from understanding_variables.un_var import *
 from data_cleaning.da_cl import *
+from visualization.basic_analysis import *
+from visualization.comparative_analysis import *
+from visualization.probabilistic_analysis import *
 
 # Instructions pop up
 def instructions(main_notebook, font):
@@ -117,9 +120,12 @@ def set_value_fields(main_notebook, labels, menubar, editmenu, anamenu, font, df
     editmenu.add_command(label="Data Cleaning", command=lambda: cleaning_data(main_notebook, labels, font, df))
     menubar.add_cascade(label='Pre-Processing', menu=editmenu)
 
-    anamenu.add_command(label="Data Visualization", command=lambda: data_visualization(main_notebook, labels, font, df))
+    anamenu.add_command(label="Basic Analysis", command=lambda: basic_analysis(main_notebook, labels, font, df))
+    anamenu.add_command(label="Comparative Analysis", command=lambda: comparative_analysis(main_notebook, labels, font, df))
+    anamenu.add_command(label="Probabilistic Analysis", command=lambda: probabilistic_analysis(main_notebook, labels, font, df))
+    anamenu.add_separator()
     anamenu.add_command(label="ANN Prediction", command=lambda: ann_prediction(main_notebook, labels, font, df))
-    menubar.add_cascade(label='Analysis and Prediction', menu=editmenu)
+    menubar.add_cascade(label='Analysis and Prediction', menu=anamenu)
 
 def understanding_your_variables(main_notebook, labels, font, df):
     frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
@@ -162,8 +168,72 @@ def cleaning_data(main_notebook, labels, font, df):
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
-def data_visualization(main_notebook, labels, font, df):
-    pass
+def basic_analysis(main_notebook, labels, font, df):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='Basic Analysis')
+
+    frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Button(frame1, text='Count Plot', command=lambda: count_plot(df, labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.3, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Histogram', command=lambda: count_histogram(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.5, relwidth=0.5, relheight=0.05)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
+
+def comparative_analysis(main_notebook, labels, font, df):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='Data Cleaning')
+
+    frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Button(frame1, text='Drop Duplicates', command=lambda: drop_duplicates(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda: replace_zeros_mean(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Replace '?' with NaN", command=lambda: replace_question_NaN(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop rows with NaN', command=lambda: drop_NaN_rows(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Rows', font=font, command=lambda: drop_rows(main_notebook, df, font), bg='#008080',
+              fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Columns', command=lambda: drop_columns(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
+
+def probabilistic_analysis(main_notebook, labels, font, df):
+    frame = tk.Frame(main_notebook, bg='White', width=600, height=600, bd=5)
+    frame.pack(fill='both', expand=1)
+
+    main_notebook.add(frame, text='Data Cleaning')
+
+    frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
+    frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
+
+    tk.Button(frame1, text='Drop Duplicates', command=lambda: drop_duplicates(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Replace Zeros With Mean', command=lambda: replace_zeros_mean(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.25, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Replace '?' with NaN", command=lambda: replace_question_NaN(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Drop rows with NaN', command=lambda: drop_NaN_rows(df), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Rows', font=font, command=lambda: drop_rows(main_notebook, df, font), bg='#008080',
+              fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Delete Columns', command=lambda: drop_columns(main_notebook, df, font), font=font,
+              bg='#008080', fg='White').place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
+
+    close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
+    close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
 
 def ann_prediction(main_notebook, labels, font, df):
     pass
