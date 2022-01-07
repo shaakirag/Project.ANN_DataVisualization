@@ -235,16 +235,14 @@ def probabilistic_analysis(main_notebook, labels, font, df):
     frame1 = tk.LabelFrame(frame, text='Select a Command', font=font)
     frame1.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.9)
 
-    tk.Button(frame1, text='Chain Consumer', command=lambda: chain_consumer(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Multivariate Normal Distribution', command=lambda: multivariate_normal_distribution(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.3, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text="Scatter Matrix Label 0", command=lambda: scatter_matrix_label0(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.5, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Scatter Matrix Label 1', command=lambda: scatter_matrix_label1(df), font=font, bg='#008080',
-              fg='White').place(relx=0.25, rely=0.7, relwidth=0.5, relheight=0.05)
-    tk.Button(frame1, text='Test Point Probability', font=font, command=lambda: test_point_prob(main_notebook, df, font), bg='#008080',
-              fg='White').place(relx=0.25, rely=0.9, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Chain Consumer', command=lambda: chain_consumer(main_notebook, df, font, labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.15, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text="Scatter Matrix Label 0", command=lambda: scatter_matrix_label0(main_notebook, df, font, labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.35, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Scatter Matrix Label 1', command=lambda: scatter_matrix_label1(main_notebook, df, font, labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.55, relwidth=0.5, relheight=0.05)
+    tk.Button(frame1, text='Multivariate Normal Distribution', command=lambda: multivariate_normal_distribution(main_notebook, df, font, labels), font=font, bg='#008080',
+              fg='White').place(relx=0.25, rely=0.75, relwidth=0.5, relheight=0.05)
 
     close = tk.Button(frame, text='Close', command=frame.destroy, font=font, bg='#008080', fg='White')
     close.place(relx=0.45, rely=0.95, relwidth=0.1, relheight=0.04)
