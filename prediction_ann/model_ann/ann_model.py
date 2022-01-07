@@ -14,6 +14,9 @@ class ANN_Model(nn.Module):
         x=self.out(x)
         return x
 
+def modeling(df):
+    pass
+
 # Spitting data into train and test
 def df_split(df, label):
     # independent features
